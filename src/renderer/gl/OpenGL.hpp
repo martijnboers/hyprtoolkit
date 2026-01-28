@@ -10,6 +10,7 @@
 #include <hyprutils/os/FileDescriptor.hpp>
 #include <aquamarine/buffer/Buffer.hpp>
 
+#include <GLES2/gl2.h>
 #include <GLES2/gl2ext.h>
 #include <EGL/egl.h>
 #include <EGL/eglext.h>
@@ -41,6 +42,10 @@ namespace Hyprtoolkit {
         virtual void                 signalRenderPoint(SP<CSyncTimeline> timeline);
 
         virtual bool                 explicitSyncSupported();
+
+        virtual int                  getMaxTextureSize();
+
+        GLint                        maxTextureSize = 0;
 
       private:
         CBox                           logicalToGL(const CBox& box, bool transform = true);
